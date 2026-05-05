@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso de HTML5 y CSS3 - Vídeos</title>
     <link rel="stylesheet" href="recursos/CSS/style.css">
-    <link rel="stylesheet" href="recursos/CSS/reproductor.css">
+    <link rel="stylesheet" href="recursos/CSS/serpiente.css">
 </head>
 <body>
     <div id="page">
@@ -32,26 +32,13 @@
         </nav>
 
         <main>
-            <div id="reproductor">
-                <video id="medio" width="720" height="400">
-                    <source src="recursos/media/trailer.mp4">
-                    <source src="media/trailer.ogg">
-                </video>
-                <div id="barra">
-                    <div id="progreso"></div>
-                </div>
-            </div>
+                <div id="contenedorVideojuego">
 
-            <nav>
-                <input type="button" id="reiniciar"    value="reiniciar">
-                <input type="button" id="retrasar"     value="&laquo;">
-                <input type="button" id="play"         value="&#9658;">
-                <input type="button" id="adelantar"    value="&raquo;">
-                <input type="button" id="silenciar"    value="silenciar">
-                <label>Volumen</label>
-                <input type="button" id="menosVolumen" value="-">
-                <input type="button" id="masVolumen"   value="+">
-            </nav>
+                    <canvas id="lienzo" width="500" height="300">
+                        Tu navegador no soporta Canvas
+                    </canvas>
+
+            </div>
         </main>
 
         <footer id="footer">
@@ -63,6 +50,6 @@
 
     </div>
 
-    <script src="recursos/Js/reproductor.js"></script>
+    <script src="recursos/Js/serpiente.js"></script>
 </body>
 </html>
