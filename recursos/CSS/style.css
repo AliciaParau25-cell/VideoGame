@@ -19,6 +19,7 @@ body {
     overflow: hidden;
 }
 
+/* HEADER */
 header {
     background-color: rgb(0, 132, 255);
     color: white;
@@ -34,14 +35,28 @@ header h1 {
     line-height: 60px;
 }
 
+/* 🔄 LOGO GIRANDO */
 header h1 img {
     position: absolute;
     left: 15px;
     top: 15px;
     height: 50px;
     width: auto;
+
+    animation: giroHorizontal 3s linear infinite;
+    transform-style: preserve-3d;
 }
 
+@keyframes giroHorizontal {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* NAV */
 nav {
     font-family: Courier, monospace;
     background: linear-gradient(to bottom, #fde08d 0%, #febf04 100%);
@@ -78,15 +93,13 @@ nav > ul > li > a {
 #page > nav > ul > li > a {
     text-shadow: 0px 0px 5px white;
     transition: text-shadow 0.5s;
-    -webkit-transition: text-shadow 0.5s;
-    -moz-transition: text-shadow 0.5s;
-    -o-transition: text-shadow 0.5s;
 }
 
 #page > nav > ul > li > a:hover {
     text-shadow: 2px 2px 0px red;
 }
 
+/* SUBMENÚ */
 #page > nav li ul {
     position: absolute;
     z-index: 2;
@@ -100,9 +113,6 @@ nav > ul > li > a {
     height: 0px;
     overflow: hidden;
     transition: height 0.4s linear;
-    -webkit-transition: height 0.4s linear;
-    -moz-transition: height 0.4s linear;
-    -o-transition: height 0.4s linear;
 }
 
 #page > nav li:hover ul {
@@ -136,8 +146,6 @@ nav > ul > li > a {
 #page > nav li ul li:first-child:before {
     content: '';
     position: absolute;
-    width: 1px;
-    height: 1px;
     border: 5px solid transparent;
     border-bottom-color: #e34c26;
     left: 50%;
@@ -145,15 +153,7 @@ nav > ul > li > a {
     margin-left: -5px;
 }
 
-#page > nav li ul li a {
-    padding: 8px 12px;
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    font-weight: normal;
-    text-shadow: none;
-}
-
+/* CONTENT */
 #content {
     background-image: url("../../imagenes/imagen/lgrey008.jpg");
     padding: 50px 20px;
@@ -162,6 +162,7 @@ nav > ul > li > a {
     align-items: flex-start;
 }
 
+/* ARTÍCULOS */
 .article {
     width: 290px;
     min-height: 520px;
@@ -178,24 +179,17 @@ nav > ul > li > a {
 
 .article-first {
     transform: rotate(-2deg);
-    -webkit-transform: rotate(-2deg);
-    -moz-transform: rotate(-2deg);
-    -o-transform: rotate(-2deg);
-    -ms-transform: rotate(-2deg);
 }
 
 .article-third {
     transform: rotate(2deg);
-    -webkit-transform: rotate(2deg);
-    -moz-transform: rotate(2deg);
-    -o-transform: rotate(2deg);
-    -ms-transform: rotate(2deg);
 }
 
 .article_header {
     position: relative;
 }
 
+/* 📌 CHINCHETAS CON ANIMACIÓN */
 .chincheta {
     position: absolute;
     width: 35px;
@@ -205,12 +199,40 @@ nav > ul > li > a {
     background-size: contain;
     top: -91px;
     z-index: 3;
+
+    opacity: 0;
+    transform: translateX(-120px);
+    animation: entrarChincheta 0.8s ease forwards;
 }
 
-.article-first  .chincheta { left: 199px; }
-.article-second .chincheta { left: 120px; }
-.article-third  .chincheta { left: 30px; }
+@keyframes entrarChincheta {
+    from {
+        opacity: 0;
+        transform: translateX(-120px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
+/* POSICIÓN + DELAY */
+.article-first  .chincheta {
+    left: 215px;
+    animation-delay: 0.2s;
+}
+
+.article-second .chincheta {
+    left: 135px;
+    animation-delay: 0.4s;
+}
+
+.article-third  .chincheta {
+    left: 45px;
+    animation-delay: 0.6s;
+}
+
+/* IMÁGENES */
 .article_header img {
     width: 220px;
     margin-bottom: 5px;
@@ -230,6 +252,7 @@ nav > ul > li > a {
     padding: 0 5px;
 }
 
+/* FOOTER */
 #footer {
     background-color: rgb(0, 132, 255);
     color: white;
