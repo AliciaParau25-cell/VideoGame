@@ -243,9 +243,6 @@ nav > ul > li > a {
     color: white;
 }
 
-/* =====================================================
-   MENÚ RESPONSIVE (EJERCICIO 3 - IMPORTANTE)
-===================================================== */
 
 /* botón menú oculto en escritorio */
 nav > a {
@@ -260,7 +257,6 @@ nav > a {
 /* ---------------- MEDIA QUERY 475px ---------------- */
 @media all and (max-width:475px){
 
-    /* botón hamburguesa */
     nav > a{
         display:block;
         width:80px;
@@ -273,17 +269,14 @@ nav > a {
         margin:0 auto;
     }
 
-    /* ocultar menú inicial */
     nav > ul{
         display:none;
     }
 
-    /* cuando se despliega con JS */
     nav > ul.desplegado{
         display:block;
     }
 
-    /* reset de márgenes */
     nav > ul > li{
         margin:0;
         display:block;
