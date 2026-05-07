@@ -1,0 +1,52 @@
+@media all and (max-width: 600px)
+{
+	div, nav, header, aside, main
+	{
+	/* Cuando el ancho sea inferior a 600px el elemento será un bloque */	
+		display: block !important;
+		width: 100% !important;
+		margin: auto !important;
+		position: static !important;
+		float: none !important;
+	}
+}
+
+nav
+{
+	background: #F99;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 30px;
+}
+
+.pagina
+{	
+/* Este es el delimitador para que la página no sea excesivamente grande */
+	max-width: 1000px;
+	margin:auto;
+}
+
+header
+{
+	background: #9F9;
+	margin-top: 30px;
+	height: 200px;
+}
+
+aside
+{
+	background: #99F;
+	float: left;	/* flotamos el elemento a la izquierda */
+	width: 35%;
+	height: 600px;
+}
+
+main
+{
+	background: #AAA;
+	width: 65%;
+	margin-left: 35%;
+	height: 900px;
+}

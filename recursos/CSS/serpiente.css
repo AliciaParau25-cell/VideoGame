@@ -1,35 +1,75 @@
-/* Contenedor del juego */
-main { text-align: center; }
-
-#contenedorVideojuego {
-    display: inline-block;
-    margin: 50px;
-    width: 600px;
-    padding: 20px 50px;
-    background: rgba(200, 200, 200, 0.7);
-    text-align: center;
-    box-shadow: 3px 0px 8px rgba(0, 0, 0, 0.4);
+main{
+    text-align:center;
 }
 
-/* EJERCICIO 3: Logo Girando */
-header h1 img {
-    height: 50px;
-    width: auto;
-    animation: giraLogo 5s infinite linear;
+#contenedorVideojuego{
+    display:inline-block;
+    margin:50px;
+    width:600px;
+    padding:20px 50px;
+    background:rgba(200,200,200,0.7);
+    text-align:center;
+    box-shadow:3px 0px 8px rgba(0,0,0,0.4);
 }
 
-@keyframes giraLogo {
-    0% { transform: rotateY(0deg); }
-    50% { transform: rotateY(180deg); }
-    100% { transform: rotateY(0deg); }
+
+
+#lienzo{
+    max-width:100%;
+    height:auto;
+    background-color:#000;
 }
 
-/* Estilos para las chinchetas (Ejercicio 4 - Preparación) */
-.chincheta1, .chincheta2, .chincheta3 {
-    position: absolute;
-    width: 35px;
-    height: 49px;
-    background: url("../chincheta.png") no-repeat;
-    background-size: contain;
-    animation-fill-mode: forwards;
+
+header h1 img{
+    height:50px;
+    width:auto;
+    animation:giraLogo 5s infinite linear;
+}
+
+@keyframes giraLogo{
+
+    0%{
+        transform:rotateY(0deg);
+    }
+
+    50%{
+        transform:rotateY(180deg);
+    }
+
+    100%{
+        transform:rotateY(0deg);
+    }
+}
+
+
+
+.chincheta1,
+.chincheta2,
+.chincheta3{
+
+    position:absolute;
+    width:35px;
+    height:49px;
+
+    background:url("../imagenes/chincheta.png") no-repeat;
+    background-size:contain;
+
+    animation-fill-mode:forwards;
+}
+
+
+@media all and (max-width:1024px){
+
+    #contenedorVideojuego{
+
+        margin:5%;
+        padding:2% 5%;
+        width:80%;
+    }
+
+    #lienzo{
+
+        width:80%;
+    }
 }

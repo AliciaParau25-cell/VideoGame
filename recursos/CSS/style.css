@@ -1,15 +1,18 @@
+/* ---------------- RESET ---------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ---------------- BODY ---------------- */
 body {
     background-color: #f06529;
     font-family: Arial, sans-serif;
     padding: 30px 0;
 }
 
+/* ---------------- PAGE ---------------- */
 #page {
     width: 960px;
     margin: 0 auto;
@@ -19,7 +22,7 @@ body {
     overflow: hidden;
 }
 
-/* HEADER */
+/* ---------------- HEADER ---------------- */
 header {
     background-color: rgb(0, 132, 255);
     color: white;
@@ -35,7 +38,7 @@ header h1 {
     line-height: 60px;
 }
 
-/* 🔄 LOGO GIRANDO */
+/* LOGO ANIMADO */
 header h1 img {
     position: absolute;
     left: 15px;
@@ -48,15 +51,11 @@ header h1 img {
 }
 
 @keyframes giroHorizontal {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(360deg);
-    }
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
 }
 
-/* NAV */
+/* ---------------- NAV ---------------- */
 nav {
     font-family: Courier, monospace;
     background: linear-gradient(to bottom, #fde08d 0%, #febf04 100%);
@@ -153,7 +152,7 @@ nav > ul > li > a {
     margin-left: -5px;
 }
 
-/* CONTENT */
+/* ---------------- CONTENT ---------------- */
 #content {
     background-image: url("../../imagenes/imagen/lgrey008.jpg");
     padding: 50px 20px;
@@ -162,7 +161,7 @@ nav > ul > li > a {
     align-items: flex-start;
 }
 
-/* ARTÍCULOS */
+/* ---------------- ARTÍCULOS ---------------- */
 .article {
     width: 290px;
     min-height: 520px;
@@ -177,19 +176,14 @@ nav > ul > li > a {
     margin-top: 30px;
 }
 
-.article-first {
-    transform: rotate(-2deg);
-}
-
-.article-third {
-    transform: rotate(2deg);
-}
+.article-first { transform: rotate(-2deg); }
+.article-third { transform: rotate(2deg); }
 
 .article_header {
     position: relative;
 }
 
-/* 📌 CHINCHETAS CON ANIMACIÓN */
+/* CHINCHETAS */
 .chincheta {
     position: absolute;
     width: 35px;
@@ -206,33 +200,15 @@ nav > ul > li > a {
 }
 
 @keyframes entrarChincheta {
-    from {
-        opacity: 0;
-        transform: translateX(-120px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-120px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-/* POSICIÓN + DELAY */
-.article-first  .chincheta {
-    left: 215px;
-    animation-delay: 0.2s;
-}
+.article-first  .chincheta { left: 215px; animation-delay: 0.2s; }
+.article-second .chincheta { left: 135px; animation-delay: 0.4s; }
+.article-third  .chincheta { left: 45px;  animation-delay: 0.6s; }
 
-.article-second .chincheta {
-    left: 135px;
-    animation-delay: 0.4s;
-}
-
-.article-third  .chincheta {
-    left: 45px;
-    animation-delay: 0.6s;
-}
-
-/* IMÁGENES */
+/* TEXTOS */
 .article_header img {
     width: 220px;
     margin-bottom: 5px;
@@ -252,7 +228,7 @@ nav > ul > li > a {
     padding: 0 5px;
 }
 
-/* FOOTER */
+/* ---------------- FOOTER ---------------- */
 #footer {
     background-color: rgb(0, 132, 255);
     color: white;
@@ -265,4 +241,51 @@ nav > ul > li > a {
 
 #footer a {
     color: white;
+}
+
+/* =====================================================
+   MENÚ RESPONSIVE (EJERCICIO 3 - IMPORTANTE)
+===================================================== */
+
+/* botón menú oculto en escritorio */
+nav > a {
+    display: none;
+}
+
+/* clase usada por JS */
+.desplegado {
+    display: block;
+}
+
+/* ---------------- MEDIA QUERY 475px ---------------- */
+@media all and (max-width:475px){
+
+    /* botón hamburguesa */
+    nav > a{
+        display:block;
+        width:80px;
+        height:80px;
+
+        background-image:url("../imgs/menu.png");
+        background-repeat:no-repeat;
+        background-position:center 10px;
+
+        margin:0 auto;
+    }
+
+    /* ocultar menú inicial */
+    nav > ul{
+        display:none;
+    }
+
+    /* cuando se despliega con JS */
+    nav > ul.desplegado{
+        display:block;
+    }
+
+    /* reset de márgenes */
+    nav > ul > li{
+        margin:0;
+        display:block;
+    }
 }

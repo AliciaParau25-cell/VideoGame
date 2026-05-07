@@ -1,0 +1,9 @@
+#contenedor .bloque
+{
+	display: inline-block;	
+	height:300px;
+	width: 300px;
+	border:1px solid #333;
+	background: #999;
+	margin:20px;
+}

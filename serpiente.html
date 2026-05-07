@@ -2,54 +2,95 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de HTML5 y CSS3 - Vídeos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <title>Curso de HTML5 y CSS3 - Serpiente</title>
+
     <link rel="stylesheet" href="recursos/CSS/style.css">
     <link rel="stylesheet" href="recursos/CSS/serpiente.css">
 </head>
+
 <body>
+
     <div id="page">
 
         <header>
-            <h1><img src="imagenes/3referencia.png" alt="Logo HTML5 CSS3 JS" />Curso de HTML5 y CSS3</h1>
+            <h1>
+                <img src="imagenes/3referencia.png" alt="Logo HTML5 CSS3 JS">
+                Curso de HTML5 y CSS3
+            </h1>
         </header>
 
         <nav>
-            <ul>
 
-                <li id="contenidos"><a href="index.html">Contenidos</a></li>
+            <!-- Botón menú responsive -->
+            <a href="#"></a>
+
+            <ul>
+                <li id="contenidos">
+                    <a href="index.html">Contenidos</a>
+                </li>
+
                 <li id="videos">
                     <a href="videos.html">Vídeos</a>
+
                     <ul>
-                        <li><a href="serpiente.html">Serpiente</a></li>
-                        <li><a href="videos.html">Vídeo 1</a></li>
-                        <li><a href="videos.html">Vídeo 2</a></li>
-                        <li><a href="videos.html">Vídeo 3</a></li>
+                        <li>
+                            <a href="serpiente.html">Serpiente</a>
+                        </li>
+
+                        <li>
+                            <a href="videos.html">Vídeo 1</a>
+                        </li>
+
+                        <li>
+                            <a href="videos.html">Vídeo 2</a>
+                        </li>
+
+                        <li>
+                            <a href="videos.html">Vídeo 3</a>
+                        </li>
                     </ul>
                 </li>
-                <li id="contacto"><a href="#">Contacto</a></li>
+
+                <li id="contacto">
+                    <a href="contactos.html">Contacto</a>
+                </li>
             </ul>
+
         </nav>
 
         <main>
-                <div id="contenedorVideojuego">
 
-                    <canvas id="lienzo" width="500" height="300">
-                        Tu navegador no soporta Canvas
-                    </canvas>
+            <div id="contenedorVideojuego">
+
+                <canvas id="lienzo" width="500" height="300">
+                    Tu navegador no soporta Canvas
+                </canvas>
 
             </div>
+
         </main>
 
         <footer id="footer">
+
             <p>
-               Yasmina Alicia Parau&copy; 2026. Curso de HTML5 y CSS3.<br />
-                Impartido para: <a href="#">CEFIRE - Específico de Formación Profesional</a>
+                Yasmina Alicia Parau &copy; 2026.
+                Curso de HTML5 y CSS3.
+                <br>
+
+                Impartido para:
+                <a href="#">
+                    CEFIRE - Específico de Formación Profesional
+                </a>
             </p>
+
         </footer>
 
     </div>
 
+    <script src="recursos/Js/menu.js"></script>
     <script src="recursos/Js/serpiente.js"></script>
+
 </body>
 </html>

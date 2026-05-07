@@ -1,0 +1,40 @@
+	html 
+	{
+		background: #444444;
+		color: #ffffff;
+	}
+
+	.demo 
+	{
+		background: #000;
+	}
+
+	.max 
+	{
+		background: #e78629;
+	}
+
+
+	.max600 
+	{
+		width: 80%;
+		max-width: 600px;
+	}
+
+	.max320 
+	{
+		width: 100%;
+		max-width: 320px;
+	}
+
+	.max-percent 
+	{
+		width: 100%;
+		max-width: 50%;
+	}
+
+	.em40 
+	{
+		width: 100%;
+		max-width: 40em;
+	}

@@ -26,6 +26,10 @@ var score = 0;
 var pause = false;
 var gameover = false;
 
+// --- VARIABLES PARA EJERCICIO 1 (WEB STORAGE) ---
+var recordSesion = 0;
+var recordAbsoluto = 0;
+
 const ARRIBA = 0;
 const DERECHA = 1;
 const ABAJO = 2;
@@ -65,12 +69,25 @@ function random(max){
     return Math.floor(Math.random()*max);
 }
 
-function reset(){
+// --- FUNCIÓN PARA CARGAR RECORDS (WEB STORAGE) ---
+function cargarRecords() {
+    // Record de sesión (se borra al cerrar la ventana)
+    if (!sessionStorage.recordSesion) {
+        sessionStorage.recordSesion = 0;
+    }
+    recordSesion = parseInt(sessionStorage.recordSesion);
 
+    // Record absoluto (se mantiene permanentemente)
+    if (!localStorage.recordAbsoluto) {
+        localStorage.recordAbsoluto = 0;
+    }
+    recordAbsoluto = parseInt(localStorage.recordAbsoluto);
+}
+
+function reset(){
     score = 0;
     dir = DERECHA;
     gameover = false;
-
     body = [];
 
     body.push(new Rectangle(40,40,10,10));
@@ -93,7 +110,6 @@ function reset(){
 }
 
 function act(){
-
     if(lastPress == KEY_P){
         pause = !pause;
         lastPress = null;
@@ -131,7 +147,7 @@ function act(){
     // comer comida
     if(body[0].intersects(food)){
         score++;
-        sndChomp.play(); // 🔊 sonido
+        sndChomp.play(); 
 
         body.push(new Rectangle(0,0,10,10));
         food.x = random(49)*10;
@@ -141,22 +157,18 @@ function act(){
     // chocar consigo misma
     for(var i=1;i<body.length;i++){
         if(body[0].intersects(body[i])){
-            gameover = true;
-            sndDie.play(); // 🔊 sonido muerte
+            ejecutarGameOver();
         }
     }
 
     // mover paredes
     for(var i=0;i<wall.length;i++){
-
         wallDir[i] = random(4);
-
         if(wallDir[i] == ARRIBA) wall[i].y -= 10;
         if(wallDir[i] == DERECHA) wall[i].x += 10;
         if(wallDir[i] == ABAJO) wall[i].y += 10;
         if(wallDir[i] == IZQUIERDA) wall[i].x -= 10;
 
-        // límites
         if(wall[i].x < 0) wall[i].x = 0;
         if(wall[i].x > 490) wall[i].x = 490;
         if(wall[i].y < 0) wall[i].y = 0;
@@ -167,15 +179,36 @@ function act(){
     for(var i=0;i<wall.length;i++){
         for(var j=0;j<body.length;j++){
             if(body[j].intersects(wall[i])){
-                gameover = true;
-                sndDie.play();
+                ejecutarGameOver();
             }
         }
     }
 }
 
-function paint(){
+// --- FUNCIÓN PARA MANEJAR EL FIN DEL JUEGO Y RECORDS ---
+function ejecutarGameOver() {
+    gameover = true;
+    sndDie.play();
 
+    // Verificar Record de Sesión
+    if(score > recordSesion){
+        recordSesion = score;
+        sessionStorage.recordSesion = score;
+
+        alert("NEW RECORD: " + score);
+    }
+
+    // Verificar Record Absoluto
+    if(score > recordAbsoluto){
+        recordAbsoluto = score;
+        localStorage.recordAbsoluto = score;
+
+        alert("NEW RECORD ALL TIME: " + score);
+    }
+}
+
+
+function paint(){
     var grad = lienzo.createLinearGradient(0,0,0,300);
     grad.addColorStop(0,"blue");
     grad.addColorStop(1,"black");
@@ -183,9 +216,12 @@ function paint(){
     lienzo.fillStyle = grad;
     lienzo.fillRect(0,0,500,300);
 
+    // Dibujar Score y Records (Ejercicio 1)
     lienzo.fillStyle = "white";
     lienzo.font = "12px Arial";
-    lienzo.fillText("Score: " + score,10,15);
+    lienzo.fillText("Score: " + score, 10, 15);
+    lienzo.fillText("Record Sesión: " + recordSesion, 10, 30);
+    lienzo.fillText("Record Absoluto: " + recordAbsoluto, 10, 45);
 
     // dibujar serpiente
     for(var i=0;i<body.length;i++){
@@ -201,7 +237,10 @@ function paint(){
     }
 
     if(gameover){
-        lienzo.fillText("GAME OVER",210,150);
+        lienzo.font = "20px Arial";
+        lienzo.fillText("GAME OVER", 190, 150);
+        lienzo.font = "12px Arial";
+        lienzo.fillText("Presiona ENTER para reiniciar", 170, 170);
     }
 
     if(pause){
@@ -219,6 +258,7 @@ function iniciar(){
     canvas = document.getElementById("lienzo");
     lienzo = canvas.getContext("2d");
 
+    cargarRecords(); // Cargar datos de la API al iniciar
     reset();
     run();
 }
